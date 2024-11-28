@@ -32,7 +32,7 @@ Before running **SentinelCam**, make sure you have the following installed:
 # How it Works
 *Login/Registration*: Users can register and log in using their email and password. The system supports user authentication with password hashing.
 
-**Image Capture:* Once logged in, the user can capture an image using their webcam. The image is saved with a timestamp and stored in the static/images/ folder.
+*Image Capture:* Once logged in, the user can capture an image using their webcam. The image is saved with a timestamp and stored in the static/images/ folder.
 
 *Email Notification:* After capturing the image, the app sends it to the user's registered email address using Gmail's SMTP server.
 
@@ -52,10 +52,9 @@ Before running **SentinelCam**, make sure you have the following installed:
 *Ensure that the "Less Secure Apps" option is enabled or use an App Password if using Gmail's SMTP server.*
 
 Troubleshooting
-1. Failed to send email:
-Ensure that the Gmail credentials are correct, and if you have 2-step verification enabled, use an app-specific password.
+1. *Failed to send email:*: Ensure that the Gmail credentials are correct, and if you have 2-step verification enabled, use an app-specific password.
 Check if Gmail is blocking the login attempt. Visit Google Account Recovery to resolve any account lockouts.
-*No image captured:*Ensure that your device has a working webcam and OpenCV is correctly installed.
+2. *No image captured:*Ensure that your device has a working webcam and OpenCV is correctly installed.
 
 
 # Acknowledgments
