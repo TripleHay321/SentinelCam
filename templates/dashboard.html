@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container-fluid dashboard-container">
+        <header class="dashboard-header">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="dashboard-content row">
+            <aside class="sidebar col-md-3 bg-dark p-4">
+                <h3 class="text-white">Welcome, {{ current_user.username }}</h3>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('home') }}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('home') }}">Settings</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('user_data') }}">User Data</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('home') }}">Help</a></li>
+                </ul>
+            </aside>
+
+            <main class="main-content col-md-9 bg-dark p-4 text-white">
+                <h2>Dashboard Overview</h2>
+                <div class="dashboard-info">
+                    <div class="info-box">
+                        <h3>Automation</h3>
+                        <form action="{{ url_for('capture_and_send_email') }}" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-light">Capture Image and Send Email</button>
+                        </form>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Last Sent Activity</h3>
+                        <ul>
+                            {% if last_sent_date and last_sent_time %}
+                                <li>Date: {{ last_sent_date }}</li>
+                                <li>Time: {{ last_sent_time }}</li>
+                            {% else %}
+                                <li>No image has been sent yet.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Messages</h3>
+                        <p>You have {{ unread_messages }} unread messages.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Image Logs</h3>
+                        {% if image_logs %}
+                            <ul class="list-group">
+                                {% for log in image_logs %}
+                                    <li class="list-group-item bg-dark text-white">
+                                        <img src="{{ url_for('static', filename=log.filename) }}" alt="Captured Image" width="100px" />
+                                        <p><strong>{{ log.filename.split('static/images/')[1] }}</strong></p>
+                                        <p>Captured on: {{ log.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No images captured yet.</p>
+                        {% endif %}
+                    </div>
+
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>Filename</th>
+                                <th>Timestamp</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for log in image_logs %}
+                            <tr>
+                                <td>{{ log.filename.split('static/images/')[1] }}</td>
+                                <td>{{ log.timestamp }}</td>
+                                <td>
+                                    <form action="{{ url_for('delete_log', log_id=log.id) }}" method="post" style="display:inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>                                    
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> 
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

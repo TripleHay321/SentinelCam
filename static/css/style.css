@@ -1,0 +1,76 @@
+/* Basic reset for body and containers */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.container, .dashboard-container {
+    margin-top: 40px;
+}
+
+h1, h2, h3 {
+    color: #fff;
+}
+
+.navbar, .navbar-dark {
+    background-color: #222;
+}
+
+.nav-link {
+    color: #fff !important;
+    padding: 10px;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+.form-control {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+}
+
+.btn-dark, .btn-outline-light {
+    background-color: #444;
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.table, .table th, .table td {
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.table-dark {
+    background-color: #222;
+}
+
+.info-box {
+    background-color: #222;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+img.img-fluid {
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #111;
+    color: #aaa;
+    padding: 10px;
+}
+
+

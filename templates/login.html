@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="my-4 text-center text-white">Login</h2>
+
+        <form method="POST" class="form-horizontal">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="email" class="form-label text-white">Email</label>
+                {{ form.email(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label text-white">Password</label>
+                {{ form.password(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class="btn btn-dark btn-block") }}
+            </div>
+
+            <p class="text-center mt-3 text-white">Don't have an account? <a href="{{ url_for('register') }}" class="text-light">Register</a></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="my-4 text-white">User Data</h2>
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-dark mb-3">Back to Dashboard</a>
+
+        <div class="log-entries">
+            {% if image_logs %}
+                <table class="table table-dark table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for log in image_logs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ log.timestamp.strftime('%Y-%m-%d') }}</td>
+                                <td>{{ log.timestamp.strftime('%H:%M:%S') }}</td>
+                                <td>
+                                    <td>
+                                        <img src="{{ url_for('static', filename='images/' + log.filename.split('static/images/')[1]) }}" alt="Captured Image" width="150" class="img-fluid">
+                                    </td>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No logs available.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
