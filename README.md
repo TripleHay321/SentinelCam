@@ -4,12 +4,12 @@
 
 # Features
 
-**User Authentication**: Secure login and registration system with password hashing using Flask-Bcrypt.
-**Image Capture**: Uses OpenCV to capture an image from the device's webcam.
-**Email Notifications**: Sends the captured image to the user's email using Gmail's SMTP server.
-**Image Logs**: Captures images and stores metadata in a database for future reference.
-**Delete Logs**: Users can delete their image logs from the database and the file system.
-**User Dashboard**: Provides a user-friendly interface for accessing captured images and logs.
+- **User Authentication**: Secure login and registration system with password hashing using Flask-Bcrypt.
+- **Image Capture**: Uses OpenCV to capture an image from the device's webcam.
+- **Email Notifications**: Sends the captured image to the user's email using Gmail's SMTP server.
+- **Image Logs**: Captures images and stores metadata in a database for future reference.
+- **Delete Logs**: Users can delete their image logs from the database and the file system.
+- **User Dashboard**: Provides a user-friendly interface for accessing captured images and logs.
 
 # Prerequisites
 
